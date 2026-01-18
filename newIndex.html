@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rutiTravel.co.il</title>
+    <link rel="stylesheet" href="newIndex.css">
+</head>
+
+<body id="body" onload="basicDataTolocalStoreg()">
+    <h1>High sea</h1>
+    <h2>אפליקציה לתכנון הפלגות בארץ ובעולם</h2>
+    <!-- ------------דף 1-הרשמה/התחברות -->
+
+    <form id="login" class="form show">
+        <label>מייל</label>
+        <input type="text" placeholder="הכנס מייל" name="UserEmail" required="required">
+        <label>סיסמה</label>
+        <input type="password" placeholder="הכנס סיסמה" name="psw" required="required">
+        <button type="submit" onclick="loadOrders(event),login_(group,login,event) ">התחברות</button>
+
+        <a href="" onclick="showObje(register,login,event)">שכחת סיסמה?</a>
+    </form>
+    <form id="register" class="form hide">
+        <!-- <label>שם משתמש</label> -->
+        <input type="text" placeholder=" שם משתמש" name="Username" required="required">
+        <!-- <label>מייל</label> -->
+        <input type="email" placeholder=" מייל" name="email" required="required">
+        <!-- <label>סיסמה</label> -->
+        <input type="password" placeholder=" סיסמה" name="password" required="required">
+        <button type="submit" onclick="loadOrders(event),register_(group,register,event) ">הרשמה</button>
+        <p>כבר יש לך חשבון אצלינו?<a href="" onclick="showObje(login,register,event)">הכנס</a></p>
+    </form>
+
+
+    <!------------------- דף 2-המסלולים --------------->
+
+    <div id="group" class="hide">
+        
+        <a class="category" href="" onclick="
+                showObje(time,group,event)">תכנן הפלגה</a>
+
+        <a class="category" href="" onclick="
+            showObje(last_orders,group,event), changeBk_ve()">להזמנות קודמות</a>
+
+
+
+
+    </div>
+    <!---------------------- תכנון ההפלגה------------------------>
+
+    <!--------------------- pg1  date-------------------------->
+    <div class="hide order" id="time">
+        <button class="shopping_cart" onclick="showObje(cart,time,event),add_date_target(),renderCart()"><img
+                src="icon/shopping-cart.png"></button>
+        <form class="list" id="target_">
+            <h3> יעד סופי</h3>
+            <label> <input name="city" type="radio" value="איטליה" />איטליה</label>
+            <label> <input name="city" type="radio" value="איי כריתים" />איי כריתים</label>
+            <label> <input name="city" type="radio" value="נאפולי" />נאפולי</label>
+            <label> <input name="city" type="radio" value="איי הבריטים" />איי הבריטים</label>
+            <label> <input name="city" type="radio" value="דוברובניק" />דוברובניק</label>
+            <label> <input name="city" type="radio" value="יון" />יון</label>
+            <label> <input name="city" type="radio" value="קפריסין" />קפריסין</label>
+        </form>
+        <hr />
+        <form class="list" id="stop_over">
+            <h3> עצירות ביניים</h3>
+            <label> <input name="city" type="checkbox" value="איטליה"  onclick="addStep_over(event)"/>איטליה</label>
+            <label> <input name="city" type="checkbox" value="איי כריתים " onclick="addStep_over(event)"/>איי כריתים</label>
+            <label> <input name="city" type="checkbox" value="נאפולי" onclick="addStep_over(event)"/>נאפולי</label>
+            <label> <input name="city" type="checkbox" value="איי הבריטים" onclick="addStep_over(event)"/>איי הבריטים</label>
+            <label> <input name="city" type="checkbox" value="דוברובניק" onclick="addStep_over(event)"/>דוברובניק</label>
+            <label> <input name="city" type="checkbox" value="יון" onclick="addStep_over(event)"/>יון</label>
+            <label> <input name="city" type="checkbox" value="קפריסין" onclick="addStep_over(event)"/>קפריסין</label>
+        </form>
+        <hr />
+        <form class="list" id="date">
+            <h3> תאריך הפלגה </h3>
+            <label></label>
+            <input name="datetime" type="date">
+        </form>
+
+        <a class="next" href="" onclick="showObje(yachts,time,event),add_date_target(),renderCart()">next</a>
+    </div>
+    <!------------------------------- pg2 yacht------------------>
+    <div class="order hide" id="yachts">
+        <h2>-היאכטות שלנו-</h2>
+        <button class="shopping_cart" onclick="showObje(cart,yachts,event),renderCart()"><img src="icon/shopping-cart.png"></button>
+        <div class="yacht">
+            <h3>שנהב</h3>
+            <img src="images/b.jpg" />
+            <p>היאכטה מציעה שלל פינוקים
+                בריכה ,ג'קוזי,ואפילו חדר כושר קופקטי-שלא תפספסו את האימון שלכם גם בנופש
+                <span>3,990$</span>
+            </p>
+            <button id="שנהב" onclick="addYacht(event)">order</button>
+        </div>
+
+
+        <div class="yacht">
+            <h3>ספיר</h3>
+            <img src="images/w.jpg" />
+            <p>היאכטה מציעה שלל פינוקים
+                בריכה ,ג'קוזי,ואפילו חדר כושר קופקטי-שלא תפספסו את האימון שלכם גם בנופש
+                <span>2,000$</span>
+            </p>
+            <button id="ספיר" onclick="addYacht(event)">order</button>
+        </div>
+
+        <div class="yacht">
+            <h3>אלמוג</h3>
+            <img src="images/g.jpg" />
+            <p>היאכטה מציעה שלל פינוקים
+                בריכה ,ג'קוזי,ואפילו חדר כושר קופקטי-שלא תפספסו את האימון שלכם גם בנופש
+                <span>1,990$</span>
+            </p>
+            <button id="אלמוג" onclick="addYacht(event)">order</button>
+        </div>
+
+        <div class="yacht">
+            <h3>אריאל</h3>
+            <img src="images/z.jpg" />
+            <p>היאכטה מציעה שלל פינוקים
+                בריכה ,ג'קוזי,ואפילו חדר כושר קופקטי-שלא תפספסו את האימון שלכם גם בנופש
+                <span>1,500$</span>
+            </p>
+            <button id="אריאל" onclick="addYacht(event)">order</button>
+        </div>
+
+        <div class="yacht">
+            <h3>חלמיש</h3>
+            <img src="images/ym.jpg" />
+            <p>היאכטה מציעה שלל פינוקים
+                בריכה ,ג'קוזי,ואפילו חדר כושר קופקטי-שלא תפספסו את האימון שלכם גם בנופש
+                <span>2,000$</span>
+            </p>
+            <button id="חלמיש" onclick="addYacht(event)">order</button>
+        </div>
+
+        <div class="yacht">
+            <h3>נגה</h3>
+            <img src="images/r.jpg" />
+            <p>היאכטה מציעה שלל פינוקים
+                בריכה ,ג'קוזי,ואפילו חדר כושר קופקטי-שלא תפספסו את האימון שלכם גם בנופש
+                <span>1,990$</span>
+            </p>
+            <button id="נגה" onclick="addYacht(event)">order</button>
+        </div>
+
+
+
+
+        <a class="next" href="" onclick="showObje(attractions,yachts,event),renderCart()">next</a>
+    </div>
+    <!------------------- pg3 attractions----------------------->
+
+    <div id="attractions" class="hide">
+        <h2>-בילויים נוספים-</h2>
+        <button class="shopping_cart" onclick="showObje(cart,attractions,event),renderCart()"><img
+                src="icon/shopping-cart.png"></button>
+        <div class="fun">
+            <img src="images/surf.jpg" />
+            <button id="גלישה" onclick="addAttraction(event)">גלשן</button>
+        </div>
+
+        <div class="fun">
+            <img src="images/dolphin.jpg" />
+            <button id="שחיה עם דולפינים" onclick="addAttraction(event)">שחיה עם דולפינים</button>
+        </div>
+
+        <div class="fun">
+            <img src="images/meat.jpg" />
+            <button id="פנסיון מלא" onclick="addAttraction(event)">פנסיון מלא</button>
+        </div>
+
+        <div class="fun">
+            <img src="images/pizza.jpg" />
+            <button id="חצי פנסיון" onclick="addAttraction(event)">חצי פנסיון</button>
+        </div>
+        <div class="fun">
+            <img src="images/diving.jpg" />
+            <button id="צלילה" onclick="addAttraction(event)">צלילה</button>
+        </div>
+
+        <div class="fun">
+            <img src="images/spa.jpg" />
+            <button id="ספא" onclick="addAttraction(event)">ספא מפנק</button>
+        </div>
+
+
+        <a class="next" href="" onclick="showObje(celebration,attractions,event),renderCart()">next</a>
+
+    </div>
+    <!-- --------------pg4 celebration ------------------------->
+    <div id="celebration" class="hide">
+        <h2>-סגנון האירוע-</h2>
+        <button class="shopping_cart" onclick="showObje(cart,celebration,event),renderCart()"><img
+                src="icon/shopping-cart.png"></button>
+        <button id="יום הולדת" class="b" onclick="addCelebration(event)"><img src="icon/cake2.jpg">יום הולדת</button>
+        <button id="הפלגת דיג" class="b" onclick="addCelebration(event)"><img src="icon/phishing.png">הפלגת
+            דיג</button>
+        <button id="יום גיבוש" class="b" onclick="addCelebration(event)"><img src="icon/groups.png">ימי גיבוש</button>
+        <button id="יום נישואין" class="b" onclick="addCelebration(event)"><img src="icon/wedding-rings.png">יום
+            נישואין</button>
+        <a class="next" href="" onclick="showObje(cart,celebration,event),renderCart()">next</a>
+    </div>
+    <!----------------------- pg5 cart------------------------>
+    <div id="cart" class="hide order">
+    </div>
+    <!-- ----------------------הפלגות שלך ---------------------->
+    <div id="last_orders" class="hide order">
+    </div>
+</body>
+<script src="newIndex.js"></script>
+
+</html>
+
+  
